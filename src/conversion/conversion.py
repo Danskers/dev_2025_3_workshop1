@@ -1,5 +1,10 @@
 class Conversion:
     def celsius_a_fahrenheit(self, celsius):
+        celsius: float
+
+        return (celsius * 9 / 5) + 32
+    
+        
         """
         Convierte temperatura de Celsius a Fahrenheit.
         
