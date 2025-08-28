@@ -78,6 +78,13 @@ class Conversion:
         pass
     
     def decimal_a_binario(self, decimal):
+        if decimal == 0:
+            return "0"
+        binario = ""
+        while decimal > 0:
+            binario = str(decimal % 2) + binario
+            decimal = decimal // 2
+        return binario
         """
         Convierte un número decimal a su representación binaria.
         
