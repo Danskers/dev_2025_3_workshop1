@@ -60,6 +60,7 @@ class Conversion:
         pass
     
     def pies_a_metros(self, pies):
+        return pies * 0.3048
         """
         Convierte distancia de pies a metros.
         
