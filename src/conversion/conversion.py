@@ -101,6 +101,12 @@ class Conversion:
         pass
     
     def binario_a_decimal(self, binario):
+        if not all(bit in '01' for bit in binario):
+            raise ValueError("El valor binario solo debe contener 0s y 1s.")
+        decimal = 0
+        for i, bit in enumerate(reversed(binario)):
+            decimal += int(bit) * (2 ** i)
+        return decimal
         """
         Convierte un número binario a decimal.
         
