@@ -150,6 +150,16 @@ class Conversion:
         pass
     
     def romano_a_decimal(self, romano):
+        valores = {'I': 1, 'IV':4,'V':5, 'IX':9,'X':10, 'XL':40,'L':50, 'XC':90,'C':100, 'CD':400,'D':500, 'CM':900,'M':1000}
+        total = 0
+        prev_valor = 0
+        for char in reversed(romano):
+            valor = valores[char]
+            if valor < prev_valor:
+                total -= valor
+            else:
+                total += valor
+            prev_valor = valor
         """
         Convierte un número romano a decimal.
         
