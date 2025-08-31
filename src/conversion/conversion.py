@@ -150,61 +150,65 @@ class Conversion:
         pass
     
     def romano_a_decimal(self, romano):
-        valores = {'I': 1, 'IV':4,'V':5, 'IX':9,'X':10, 'XL':40,'L':50, 'XC':90,'C':100, 'CD':400,'D':500, 'CM':900,'M':1000}
-        total = 0
-        prev_valor = 0
-        for char in reversed(romano):
-            valor = valores[char]
-            if valor < prev_valor:
-                total -= valor
-            else:
-                total += valor
-            prev_valor = valor
-        """
-        Convierte un número romano a decimal.
-        
-        Args:
-            romano (str): Número romano válido
+            valores = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+                       'C': 100, 'D': 500, 'M': 1000}
+            total = 0
+            prev_valor = 0
+            for char in reversed(romano):
+                valor = valores.get(char)
+                if not valor:
+                    raise ValueError(f"Carácter romano inválido: {char}")
+                if valor < prev_valor:
+                    total -= valor
+                else:
+                    total += valor
+                prev_valor = valor
+            return total
+            """
+            Convierte un número romano a decimal.
             
-        Returns:
-            int: Número decimal
-            
-        Ejemplo:
-            romano_a_decimal("IX") -> 9
-            romano_a_decimal("MCMXCIV") -> 1994
-        """
-        pass
+            Args:
+                romano (str): Número romano válido
+                
+            Returns:
+                int: Número decimal
+                
+            Ejemplo:
+                romano_a_decimal("IX") -> 9
+                romano_a_decimal("MCMXCIV") -> 1994
+            """
+    pass
     
     def texto_a_morse(self, texto):
 
         def text_morse(texto):
             morse_dic = {
-                'A': '.-',    'a': '.-',
-                'B': '-...',  'b': '-...',
-                'C': '-.-.',  'c': '-.-.',
-                'D': '-..',   'd': '-..',
-                'E': '.',     'e': '.',
-                'F': '..-.',  'f': '..-.',
-                'G': '--.',   'g': '--.',
-                'H': '....',  'h': '....',
-                'I': '..',    'i': '..',
-                'J': '.---',  'j': '.---',
-                'K': '-.-',   'k': '-.-',
-                'L': '.-..',  'l': '.-..',
-                'M': '--',    'm': '--',
-                'N': '-.',    'n': '-.',
-                'O': '---',   'o': '---',
-                'P': '.--.',  'p': '.--.',
-                'Q': '--.-',  'q': '--.-',
-                'R': '.-.',   'r': '.-.',
-                'S': '...',   's': '...',
-                'T': '-',     't': '-',
-                'U': '..-',   'u': '..-',
-                'V': '...-',  'v': '...-',
-                'W': '.--',   'w': '.--',
-                'X': '-..-',  'x': '-..-',
-                'Y': '-.--',  'y': '-.--',
-                'Z': '--..',  'z': '--..',
+                'A': '.-',    
+                'B': '-...',  
+                'C': '-.-.',  
+                'D': '-..',   
+                'E': '.',     
+                'F': '..-.',  
+                'G': '--.',   
+                'H': '....',  
+                'I': '..',    
+                'J': '.---',  
+                'K': '-.-',   
+                'L': '.-..',  
+                'M': '--',    
+                'N': '-.',    
+                'O': '---',   
+                'P': '.--.',  
+                'Q': '--.-',  
+                'R': '.-.',   
+                'S': '...',   
+                'T': '-',     
+                'U': '..-',   
+                'V': '...-',  
+                'W': '.--',   
+                'X': '-..-',  
+                'Y': '-.--',  
+                'Z': '--..',  
                 '0': '-----',
                 '1': '.----',
                 '2': '..---',
@@ -215,18 +219,16 @@ class Conversion:
                 '7': '--...',
                 '8': '---..',
                 '9': '----.',
-                ' ': '/' 
+                ' ': ' ' 
             }
             texto = texto.upper()
             resultado = []
             for char in texto:
-                if char in morse_dic:
-                    resultado.append(morse_dic[char])
-                elif char == ' ':
-                    resultado.append('/')
-                else:
-                    resultado.append('/')
+                morse_char = morse_dic.get(char)
+                if morse_char:
+                    resultado.append(morse_char)
             return ' '.join(resultado)
+        return text_morse(texto)
 
         """
         Convierte texto a código Morse.
@@ -241,7 +243,7 @@ class Conversion:
             texto_a_morse("SOS") -> "... --- ..."
             texto_a_morse("HELLO") -> ".... . .-.. .-.. ---"
         """
-        pass
+    pass
     
     def morse_a_texto(self, morse):
         def morse_text(morse):
@@ -278,6 +280,8 @@ class Conversion:
                 palabra_decodificada = ''.join(morse_dic.get(letra, '') for letra in letras)
                 resultado.append(palabra_decodificada)
             return ' '.join(resultado)
+        return morse_text(morse)
+    
         """
         Convierte código Morse a texto.
         
