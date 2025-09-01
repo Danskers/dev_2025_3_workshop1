@@ -52,9 +52,10 @@ class Data:
         """
         resultado = []
         for item in lista:
-            if item not in resultado:
+            if not any(item == x and type(item) == type(x) for x in resultado):
                 resultado.append(item)
         return resultado
+     
     
     pass
     
@@ -100,8 +101,11 @@ class Data:
             list: Lista rotada
         """
         n = len(lista)
+        if n == 0:
+            return []
         k = k % n  
-        return lista[-k:] + lista[:-k]      
+        return lista[-k:] + lista[:-k]   
+       
     
     pass
     
@@ -209,4 +213,18 @@ class Data:
         Returns:
             list: Matriz transpuesta
         """
-        pass
+        if not matriz or not matriz[0]:
+            return []
+        filas = len(matriz)
+        columnas = len(matriz[0])
+        transpuesta = []
+        for j in range(columnas):
+            fila_transpuesta = []
+            for i in range(filas):
+                fila_transpuesta.append(matriz[i][j])
+            transpuesta.append(fila_transpuesta)
+        return transpuesta
+
+
+
+    pass
