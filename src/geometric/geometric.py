@@ -225,6 +225,7 @@ class Geometria:
         Returns:
             float: Volumen de la esfera
         """
+        return (4/3)*3.1416*(radio**3)
         pass
     
     def area_superficie_esfera(self, radio):
