@@ -282,6 +282,7 @@ class Geometria:
         Returns:
             float: Distancia entre los dos puntos
         """
+        return ((x2 - x1)**2 + (y2 - y1)**2)**0.5
         pass
     
     def punto_medio(self, x1, y1, x2, y2):
