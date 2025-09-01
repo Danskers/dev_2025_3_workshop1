@@ -132,6 +132,7 @@ class Geometria:
         Returns:
             float: Área del rombo
         """
+        return (diagonal_mayor * diagonal_menor) / 2
         pass
     
     def area_pentagono_regular(self, lado, apotema):
