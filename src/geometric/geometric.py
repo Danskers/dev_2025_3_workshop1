@@ -314,6 +314,10 @@ class Geometria:
         Returns:
             float: Pendiente de la recta
         """
+        if x2 - x1 == 0:
+            raise ValueError
+        return (y2 - y1) / (x2 - x1)
+        
         pass
     
     def ecuacion_recta(self, x1, y1, x2, y2):
@@ -329,7 +333,10 @@ class Geometria:
         Returns:
             tuple: Coeficientes (A, B, C) de la ecuación de la recta
         """
+        if x2 - x1 == 0:
+            raise ValueError
         return (y2 - y1, x1 - x2, x2*y1 - x1*y2)
+    
         pass
     
     def area_poligono_regular(self, num_lados, lado, apotema):
@@ -344,7 +351,8 @@ class Geometria:
         Returns:
             float: Área del polígono regular
         """
-        pass
+        return (num_lados * lado * apotema) / 2
+    pass
     
     def perimetro_poligono_regular(self, num_lados, lado):
         """
@@ -357,4 +365,5 @@ class Geometria:
         Returns:
             float: Perímetro del polígono regular
         """
+        return num_lados*lado
         pass
