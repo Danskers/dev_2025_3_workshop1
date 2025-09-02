@@ -28,7 +28,8 @@ class Logica:
         Returns:
             bool: Resultado de a OR b
         """
-        pass
+        return a or b
+    pass
     
     def NOT(self, a):
         """
