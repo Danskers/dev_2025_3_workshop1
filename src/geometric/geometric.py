@@ -314,8 +314,7 @@ class Geometria:
         Returns:
             float: Pendiente de la recta
         """
-        if x2 - x1 == 0:
-            raise ValueError
+        
         return (y2 - y1) / (x2 - x1)
         
         pass
