@@ -233,4 +233,13 @@ class Strings:
         Returns:
             list: Lista con las posiciones iniciales de cada ocurrencia
         """
+        posiciones = []
+        len_sub = len(subcadena)
+        len_texto = len(texto)
+        if len_sub == 0 or len_texto == 0 or len_sub > len_texto:
+            return posiciones
+        for i in range(len_texto - len_sub + 1):
+            if texto[i:i + len_sub] == subcadena:
+                posiciones.append(i)
+        return posiciones
         pass
