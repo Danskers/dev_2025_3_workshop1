@@ -105,6 +105,10 @@ class Stats:
         Ejemplo:
             varianza([1, 2, 3, 4, 5]) -> 2.0
         """
+        if not numeros:
+            return 0.0
+        media = self.promedio(numeros)
+        return sum((x - media) ** 2 for x in numeros) / len(numeros)
         pass
     
     def rango(self, numeros):
