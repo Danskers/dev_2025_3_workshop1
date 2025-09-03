@@ -85,6 +85,22 @@ class Strings:
         Returns:
             bool: True si son anagramas, False en caso contrario
         """
+        texto1 = texto1.replace(" ", "").lower()
+        texto2 = texto2.replace(" ", "").lower()
+        if len(texto1) != len(texto2):
+            return False
+        contador = {}
+        for char in texto1:
+            contador[char] = contador.get(char, 0) + 1
+        for char in texto2:
+            if char in contador:
+                contador[char] -= 1
+            else:
+                return False
+        for count in contador.values():
+            if count != 0:
+                return False
+        return True
         pass
     
     def contar_palabras(self, texto):
