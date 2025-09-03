@@ -202,7 +202,7 @@ class Magic:
         return suma_potencias == n
         pass
     
-    def es_cuadrado_magico(self, matriz):
+    def es_cuadrado_magico(self, matriz: list[list[int]]) -> bool:
         """
         Verifica si una matriz es un cuadrado mágico (suma igual en filas, columnas y diagonales).
         
@@ -212,4 +212,30 @@ class Magic:
         Returns:
             bool: True si es un cuadrado mágico, False en caso contrario
         """
+        n = len(matriz)
+        if n == 0:
+            return False
+
+        # Suma objetivo: primera fila
+        suma_objetivo = sum(matriz[0])
+
+        # Verificar filas
+        for fila in matriz:
+            if sum(fila) != suma_objetivo:
+                return False
+
+        # Verificar columnas
+        for j in range(n):
+            if sum(matriz[i][j] for i in range(n)) != suma_objetivo:
+                return False
+
+        # Verificar diagonal principal
+        if sum(matriz[i][i] for i in range(n)) != suma_objetivo:
+            return False
+
+        # Verificar diagonal secundaria
+        if sum(matriz[i][n - 1 - i] for i in range(n)) != suma_objetivo:
+            return False
+
+        return True
         pass
