@@ -196,6 +196,15 @@ class Strings:
         Returns:
             str: Cadena cifrada
         """
+        resultado = ""
+        for char in texto:
+            if 'a' <= char <= 'z':
+                resultado += chr((ord(char) - ord('a') + desplazamiento) % 26 + ord('a'))
+            elif 'A' <= char <= 'Z':
+                resultado += chr((ord(char) - ord('A') + desplazamiento) % 26 + ord('A'))
+            else:
+                resultado += char
+        return resultado
         pass
     
     def descifrar_cesar(self, texto, desplazamiento):
