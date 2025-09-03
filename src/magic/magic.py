@@ -14,6 +14,18 @@ class Magic:
         Returns:
             int: El n-ésimo número de Fibonacci
         """
+        fibonacci_0 = 0
+        fibonacci_1 = 1
+        if n == 0:
+            return fibonacci_0
+        elif n == 1:
+            return fibonacci_1
+        else:
+            for _ in range(2, n + 1):
+                fibonacci_n = fibonacci_0 + fibonacci_1
+                fibonacci_0 = fibonacci_1
+                fibonacci_1 = fibonacci_n
+            return fibonacci_n
         pass
     
     def secuencia_fibonacci(self, n):
