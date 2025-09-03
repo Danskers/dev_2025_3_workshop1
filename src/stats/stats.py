@@ -84,6 +84,11 @@ class Stats:
         Ejemplo:
             desviacion_estandar([1, 2, 3, 4, 5]) -> 1.41...
         """
+        if not numeros:
+            return 0.0
+        media = self.promedio(numeros)
+        varianza = sum((x - media) ** 2 for x in numeros) / len(numeros)
+        return varianza ** 0.5
         pass
     
     def varianza(self, numeros):
