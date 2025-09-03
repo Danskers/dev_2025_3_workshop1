@@ -48,6 +48,12 @@ class Strings:
         Returns:
             int: Número de vocales en la cadena
         """
+        vocales = "aeiouAEIOU"
+        contador = 0
+        for char in texto:
+            if char in vocales:
+                contador += 1
+        return contador
         pass
     
     def contar_consonantes(self, texto):
